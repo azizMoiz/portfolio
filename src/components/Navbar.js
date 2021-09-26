@@ -17,6 +17,7 @@ import AssignmentInd from '@material-ui/icons/AssignmentInd';
 import Home from '@material-ui/icons/Home';
 import Apps from '@material-ui/icons/Apps';
 import ContactMail from '@material-ui/icons/ContactMail';
+import Rocket from '@material-ui/icons/SatelliteTwoTone';
 import { makeStyles } from '@material-ui/core/styles';
 import avatar from '../images/Avatars/Aziz8.jpeg';
 import { colorPalletes } from '../styles/colors';
@@ -56,6 +57,7 @@ const menuItems = [
   { listIcon: <AssignmentInd />, listText: 'Resume', listPath: '/resume' },
   { listIcon: <Apps />, listText: 'Portfolio', listPath: '/portfolio' },
   { listIcon: <ContactMail />, listText: 'Contact', listPath: '/contact' },
+  { listIcon: <Rocket />, listText: 'NASA Picture Of The Day', listPath: '/nasa' },
 ];
 
 const Navbar = () => {
@@ -107,6 +109,7 @@ const Navbar = () => {
       </Box>
       <Drawer open={open} anchor="left" onClose={() => setOpen(false)}>
         {sideList()}
+        <Divider />
         <Footer />
       </Drawer>
     </React.Fragment>
