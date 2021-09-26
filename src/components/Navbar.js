@@ -1,69 +1,72 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Drawer from "@material-ui/core/Drawer";
-import Box from "@material-ui/core/Box";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
-import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import AssignmentInd from "@material-ui/icons/AssignmentInd";
-import Home from "@material-ui/icons/Home";
-import Apps from "@material-ui/icons/Apps";
-import ContactMail from "@material-ui/icons/ContactMail";
-import { makeStyles } from "@material-ui/core/styles";
-import avatar from "../avatar.png";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import ReadMoreIcon from '@material-ui/icons/AppsTwoTone';
+import AssignmentInd from '@material-ui/icons/AssignmentInd';
+import Home from '@material-ui/icons/Home';
+import Apps from '@material-ui/icons/Apps';
+import ContactMail from '@material-ui/icons/ContactMail';
+import { makeStyles } from '@material-ui/core/styles';
+import avatar from '../images/Avatars/Aziz8.jpeg';
+import { colorPalletes } from '../styles/colors';
 
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
-    background: "#222",
+    background: colorPalletes.strikingAndSimple.darkgrey,
     margin: 0,
   },
   arrow: {
-    color: "tomato",
+    color: colorPalletes.strikingAndSimple.lightmagenta,
   },
   title: {
-    color: "tan",
+    color: colorPalletes.strikingAndSimple.darkmagenta,
+    margin: 'auto',
   },
   menuSliderContainer: {
     width: 250,
-    background: "#511",
-    height: "100%",
+    background: colorPalletes.strikingAndSimple.darkgrey,
+    height: '100%',
   },
   avatar: {
-    display: "block",
-    margin: "0.5rem auto",
+    display: 'block',
+    margin: '0.5rem auto',
     width: theme.spacing(13),
     height: theme.spacing(13),
   },
   listItem: {
-    color: "tan",
+    color: 'tan',
   },
 }));
 
 const menuItems = [
-  { listIcon: <Home />, listText: "Home", listPath: "/" },
-  { listIcon: <AssignmentInd />, listText: "Resume", listPath: "/resume" },
-  { listIcon: <Apps />, listText: "Portfolio", listPath: "/portfolio" },
-  { listIcon: <ContactMail />, listText: "Contact", listPath: "/contact" },
+  { listIcon: <Home />, listText: 'Home', listPath: '/' },
+  { listIcon: <AssignmentInd />, listText: 'Resume', listPath: '/resume' },
+  { listIcon: <Apps />, listText: 'Portfolio', listPath: '/portfolio' },
+  { listIcon: <ContactMail />, listText: 'Contact', listPath: '/contact' },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [heading, setHeading] = useState('Welcome');
 
   const classes = useStyles();
 
   const sideList = () => (
     <Box className={classes.menuSliderContainer} component="div">
-      <Avatar className={classes.avatar} src={avatar} alt="Mahmudul Alam" />
+      <Avatar className={classes.avatar} src={avatar} alt="Aziz Moiz" />
       <Divider />
       <List>
         {menuItems.map((item, i) => (
@@ -71,7 +74,10 @@ const Navbar = () => {
             button
             key={i}
             className={classes.listItem}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              setHeading(item.listText);
+            }}
             component={Link}
             to={item.listPath}
           >
@@ -91,15 +97,15 @@ const Navbar = () => {
         <AppBar position="static" className={classes.appbar}>
           <Toolbar>
             <IconButton onClick={() => setOpen(true)}>
-              <ArrowBack className={classes.arrow} />
+              <ReadMoreIcon className={classes.arrow} />
             </IconButton>
             <Typography variant="h5" className={classes.title}>
-              Portfolio
+              {heading}
             </Typography>
           </Toolbar>
         </AppBar>
       </Box>
-      <Drawer open={open} anchor="right" onClose={() => setOpen(false)}>
+      <Drawer open={open} anchor="left" onClose={() => setOpen(false)}>
         {sideList()}
         <Footer />
       </Drawer>
