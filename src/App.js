@@ -6,6 +6,7 @@ import Resume from './components/Resume';
 import Navbar from './components/Navbar';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
+import Nasa from './components/Nasa';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/resume" component={Resume} />
         <Route exact path="/portfolio" component={Portfolio} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/nasa" component={Nasa} />
       </Switch>
     </React.Fragment>
   );
