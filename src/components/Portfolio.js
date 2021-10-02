@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -48,6 +49,7 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  ReactGA.pageview(window.location.pathname);
   const classes = useStyles();
   return (
     <Box component="div" className={classes.mainContainer}>

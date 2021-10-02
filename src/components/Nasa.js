@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import { NASA_API_KEY, NASA_APOD_URL } from '../config';
 import '../styles/Nasa.css';
 
@@ -6,6 +7,7 @@ const url = NASA_APOD_URL;
 const api_key = NASA_API_KEY;
 
 const Nasa = () => {
+  ReactGA.pageview(window.location.pathname);
   const [photoData, setPhotoData] = useState(null);
 
   useEffect(() => {

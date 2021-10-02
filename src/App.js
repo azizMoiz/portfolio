@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './components';
@@ -7,6 +8,9 @@ import Navbar from './components/Navbar';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Nasa from './components/Nasa';
+import { GA_TRACKING_ID } from './config';
+
+ReactGA.initialize(GA_TRACKING_ID, []);
 
 function App() {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -112,6 +113,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Resume = () => {
+  ReactGA.pageview(window.location.pathname);
   const classes = useStyles();
   return (
     <Box component="header" className={classes.mainContainer}>
